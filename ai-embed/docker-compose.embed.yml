@@ -1,0 +1,22 @@
+services:
+  embed:
+    image: ai-embed
+    container_name: ai-embed
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8084:8084"
+    volumes:
+      # Persist the downloaded HuggingFace model across restarts (first run downloads it).
+      - hf_cache:/root/.cache/huggingface
+    networks:
+      - ai-engine
+    restart: unless-stopped
+
+volumes:
+  hf_cache:
+
+networks:
+  ai-engine:
+    external: true
