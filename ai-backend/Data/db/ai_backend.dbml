@@ -1,0 +1,258 @@
+Table Users [headercolor: #175e7a] {
+	Id uuid [ pk, not null, unique ]
+	Login text [ not null, unique ]
+	Password text [ not null ]
+	Email text [ not null, unique ]
+	Balance decimal [ not null ]
+	DateCreate timestamptz [ not null ]
+	DateUpdate timestamptz [ not null ]
+}
+
+Table News [headercolor: #175e7a] {
+	Id uuid [ pk, not null, unique ]
+	Name text [ not null ]
+	Description text [ not null ]
+	Arcticle text [ not null ]
+	DateCreate timestamptz [ not null ]
+	DateUpdate timestamptz [ not null ]
+}
+
+Table Templates [headercolor: #175e7a] {
+	Id uuid [ pk, not null, unique ]
+	Name text [ not null ]
+	Desription text [ not null ]
+	Setting text [ not null ]
+	RedFlag text [ not null ]
+	IsPublic boolean
+	DateCreate timestamptz [ not null ]
+	DateUpdate timestamptz [ not null ]
+}
+
+Table Genres [headercolor: #cfc736] {
+	Id uuid [ pk, not null, unique ]
+	Name text [ not null ]
+	Code text [ not null, unique ]
+	DateCreate timestamptz [ not null ]
+	DateUpdate timestamptz [ not null ]
+}
+
+Table TemplatesGenres [headercolor: #177a75] {
+	Id uuid [ pk, not null, unique ]
+	TemplateId uuid [ not null ]
+	GenreId uuid [ not null ]
+	DateCreate timestamptz [ not null ]
+	DateUpdate timestamptz [ not null ]
+
+	indexes {
+		(TemplateId) [ name: 'IX_GameGenres_TemplateId' ]
+		(GenreId) [ name: 'IX_GameGenres_GenreId' ]
+	}
+}
+
+Table Games [headercolor: #175e7a] {
+	Id uuid [ pk, not null, unique ]
+	TemplateId uuid [ not null ]
+	GameStatusId uuid
+	MasterId uuid [ not null ]
+	DateCreate timestamptz [ not null ]
+	DateUpdate timestamptz [ not null ]
+
+	indexes {
+		(TemplateId) [ name: 'IX_Games_TemplateId' ]
+		(MasterId) [ name: 'IX_Games_MasterId' ]
+		(GameStatusId) [ name: 'IX_Games_GameStatusId' ]
+	}
+}
+
+Table GameStatuses [headercolor: #cfc736] {
+	Id uuid [ pk, not null, unique ]
+	Name text [ not null ]
+	Code text [ not null, unique ]
+	DateCreate timestamptz [ not null ]
+	DateUpdate timestamptz [ not null ]
+}
+
+Table FavoriteTemplates [headercolor: #177a75] {
+	Id uuid [ pk, not null, unique ]
+	UserId uuid [ not null ]
+	TemplateId uuid [ not null ]
+	DateCreate timestamptz [ not null ]
+	DateUpdate timestamptz [ not null ]
+
+	indexes {
+		(UserId, TemplateId) [ name: 'IX_FavoriteTemplates_UserId_TemplateId', unique ]
+	}
+}
+
+Table Masters [headercolor: #175e7a] {
+	Id uuid [ pk, not null, unique ]
+	Name text [ not null ]
+	Description text [ not null ]
+	DateCreate timestamptz [ not null ]
+	DateUpdate timestamptz [ not null ]
+}
+
+Table CharacterTemplates [headercolor: #175e7a] {
+	Id uuid [ pk, not null, unique ]
+	Name text [ not null ]
+	Description text [ not null ]
+	Race text [ not null ]
+	Hp integer [ not null ]
+	Power integer [ not null ]
+	Agility integer [ not null ]
+	Physique integer [ not null ]
+	Intelligence integer [ not null ]
+	Wisdom integer [ not null ]
+	Charisma integer [ not null ]
+	GenderId uuid [ not null ]
+	UserId uuid [ not null ]
+	DateCreate timestamptz [ not null ]
+	DateUpdate timestamptz [ not null ]
+
+	indexes {
+		(UserId) [ name: 'IX_CharacterTemplates_UserId' ]
+		(GenderId) [ name: 'IX_CharacterTemplates_GenderId' ]
+	}
+}
+
+Table Genders [headercolor: #cfc736] {
+	Id uuid [ pk, not null, unique ]
+	Name text [ not null ]
+	Code text [ not null, unique ]
+	DateCreate timestamptz [ not null ]
+	DateUpdate timestamptz [ not null ]
+}
+
+Table Characters [headercolor: #175e7a] {
+	Id uuid [ pk, not null, unique ]
+	Name text [ not null ]
+	Description text [ not null ]
+	Race text [ not null ]
+	Hp integer [ not null ]
+	Power integer [ not null ]
+	Agility integer [ not null ]
+	Physique integer [ not null ]
+	Intelligence integer [ not null ]
+	Wisdom integer [ not null ]
+	Charisma integer [ not null ]
+	UserId uuid [ not null ]
+	GameId uuid [ not null ]
+	DateCreate timestamptz [ not null ]
+	DateUpdate timestamptz [ not null ]
+
+	indexes {
+		(UserId, GameId) [ name: 'IX_Characters_UserId_GameId' ]
+	}
+}
+
+Table UsersGames [headercolor: #175e7a] {
+	Id uuid [ pk, not null, unique ]
+	UserId uuid [ not null ]
+	GameId uuid [ not null ]
+	DateCreate timestamptz [ not null ]
+	DateUpdate timestamptz [ not null ]
+
+	indexes {
+		(UserId) [ name: 'IX_UsersGames_UserId' ]
+		(GameId) [ name: 'IX_UsersGames_GameId' ]
+	}
+}
+
+Table Chats [headercolor: #175e7a] {
+	Id uuid [ pk, not null, unique ]
+	GameId uuid [ not null ]
+	DateCreate timestamptz [ not null ]
+	DateUpdate timestamptz [ not null ]
+
+	indexes {
+		(GameId) [ name: 'IX_Chats_GameId' ]
+	}
+}
+
+Table Messages [headercolor: #175e7a] {
+	Id uuid [ pk, not null, unique ]
+	ChatId uuid [ not null ]
+	UserId uuid
+	SenderTypeId uuid [ not null ]
+	Text text [ not null ]
+	DateCreate timestamptz [ not null ]
+	DateUpdate timestamptz [ not null ]
+
+	indexes {
+		(ChatId) [ name: 'IX_Messages_ChatId' ]
+		(UserId) [ name: 'IX_Messages_UserId' ]
+		(SenderTypeId) [ name: 'IX_Messages_SenderTypeId' ]
+	}
+}
+
+Table SenderTypes [headercolor: #cfc736] {
+	Id uuid [ pk, not null, unique ]
+	Name text [ not null ]
+	Code text [ not null, unique ]
+	DateCreate timestamptz [ not null ]
+	DateUpdate timestamptz [ not null ]
+}
+
+Ref fk_FavoriteTemplates_UserId_Users {
+	FavoriteTemplates.UserId > Users.Id [ delete: no action, update: no action ]
+}
+
+Ref fk_CharacterTemplates_UserId_Users {
+	CharacterTemplates.UserId > Users.Id [ delete: no action, update: no action ]
+}
+
+Ref fk_Characters_UserId_Users {
+	Characters.UserId > Users.Id [ delete: no action, update: no action ]
+}
+
+Ref fk_Characters_GameId_Games {
+	Characters.GameId > Games.Id [ delete: no action, update: no action ]
+}
+
+Ref fk_TemplatesGenres_TemplateId_Templates {
+	TemplatesGenres.TemplateId > Templates.Id [ delete: no action, update: no action ]
+}
+
+Ref fk_Games_GameStatusId_GameStatuses {
+	Games.GameStatusId > GameStatuses.Id [ delete: no action, update: no action ]
+}
+
+Ref fk_TemplatesGenres_GenreId_Genres {
+	TemplatesGenres.GenreId > Genres.Id [ delete: no action, update: no action ]
+}
+
+Ref fk_Games_MasterId_Masters {
+	Games.MasterId > Masters.Id [ delete: no action, update: no action ]
+}
+
+Ref fk_Games_TemplateId_Templates {
+	Games.TemplateId > Templates.Id [ delete: no action, update: no action ]
+}
+
+Ref fk_FavoriteTemplates_TemplateId_Templates {
+	FavoriteTemplates.TemplateId > Templates.Id [ delete: no action, update: no action ]
+}
+
+Ref fk_CharacterTemplates_GenderId_Genders {
+	CharacterTemplates.GenderId > Genders.Id [ delete: no action, update: no action ]
+}
+
+Ref fk_Chats_GameId_Games {
+	Chats.GameId > Games.Id [ delete: no action, update: no action ]
+}
+
+Ref fk_Messages_ChatId_Chats {
+	Messages.ChatId > Chats.Id [ delete: no action, update: no action ]
+}
+
+Ref fk_UsersGames_UserId_Users {
+	UsersGames.UserId > Users.Id [ delete: no action, update: no action ]
+}
+
+Ref fk_UsersGames_GameId_Games {
+	UsersGames.GameId > Games.Id [ delete: no action, update: no action ]
+}
+
+Ref fk_Messages_SenderTypeId_SenderTypes {
+	Messages.SenderTypeId > SenderTypes.Id [ delete: no action, update: no action ]
+}

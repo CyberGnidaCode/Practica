@@ -1,0 +1,260 @@
+
+[*.cql]
+indent_style = tab
+indent_size = tab
+tab_width = 4
+
+[*.cs]
+indent_style = space
+indent_size = 4
+tab_width = 4
+
+# SA1633: файлы не обязаны иметь header-комментарий (копирайт)
+dotnet_diagnostic.SA1633.severity = none
+
+# SA1629: текст документации не обязан заканчиваться точкой
+dotnet_diagnostic.SA1629.severity = none
+
+# SA1623: summary свойства не обязан начинаться с 'Gets or sets' —
+# документацию пишем в свободной форме.
+dotnet_diagnostic.SA1623.severity = none
+
+# SA1642: summary конструктора не обязан начинаться со стандартного текста
+# ("Initializes a new instance of...") — документацию пишем в свободной форме.
+dotnet_diagnostic.SA1642.severity = none
+
+# SA1206: порядок модификаторов не навязываем — современный стиль C#
+# допускает 'public required', а SA1206 (StyleCop 1.1.118) ложно требует
+# ставить 'required' перед 'public'. Аналогичную подсказку ReSharper
+# отключаем ниже (resharper_arrange_type_member_modifiers_highlighting).
+dotnet_diagnostic.SA1206.severity = none
+
+# CA2007: в ASP.NET Core нет SynchronizationContext, поэтому ConfigureAwait(false)
+# не нужен — отключаем требование, чтобы не засорять код.
+dotnet_diagnostic.CA2007.severity = none
+
+# CA1062: проверка аргументов на null избыточна при включённом nullable-контексте —
+# non-nullable параметры уже гарантируются компилятором.
+dotnet_diagnostic.CA1062.severity = none
+
+# CS8618: DTO-модели (команды, запросы, ответы) заполняются привязкой модели и
+# десериализацией, поэтому non-nullable свойства инициализируются не в конструкторе —
+# отключаем предупреждение об неинициализированном свойстве для всего проекта.
+dotnet_diagnostic.CS8618.severity = none
+
+# Program.cs использует top-level statements — namespace нет, поэтому правила,
+# требующие размещения using/типов внутри namespace, здесь неприменимы.
+[**/Program.cs]
+# SA1200: using не убрать внутрь namespace в top-level statements
+dotnet_diagnostic.SA1200.severity = none
+
+[*.{appxmanifest,asax,ascx,aspx,axaml,axml,config,cshtml,csproj,dbml,discomap,dtd,htm,html,js,json,jsproj,jsx,lsproj,master,njsproj,nuspec,paml,proj,props,razor,resjson,resw,resx,skin,sql,StyleCop,targets,tasks,ts,tsx,vb,vbproj,xaml,xamlx,xml,xoml,xsd}]
+indent_style = space
+indent_size = 2
+tab_width = 2
+
+# Эндпоинты инстанцируются DI-контейнером через рефлексию (AddEndpoints),
+# поэтому анализатор не видит их создание и ложно срабатывает CA1812,
+# а ReSharper — «класс никогда не используется» (UnusedType/ClassNeverInstantiated).
+[**/Endpoints/*.cs]
+dotnet_diagnostic.CA1812.severity = none
+resharper_unused_type_global_highlighting = none
+resharper_class_never_instantiated_global_highlighting = none
+
+# DTO-модели адаптеров AI-сервисов десериализуются System.Text.Json через
+# рефлексию, поэтому анализатор не видит их создание и ложно срабатывает CA1812.
+[**/AiAdapters/*.cs]
+dotnet_diagnostic.CA1812.severity = none
+
+# Модели запросов инстанцируются через привязку модели; CA1812 ложно срабатывает.
+[**/{EndpointsSetting,Models}/**.cs]
+dotnet_diagnostic.CA1812.severity = none
+
+# CQRS-фичи используют позиционные record-команды (record Command(...))
+# и намеренно вкладывают Command/Handler/Validator в один статический класс-фичу.
+# StyleCop 1.1.118 предшествует record-типам и ложно требует camelCase для
+# позиционных параметров (SA1313) и отбивку закрывающей скобки (SA1009);
+# CA1034 здесь подавляется намеренно — вложенность типов и есть требуемая структура.
+[**/Features/**.cs]
+dotnet_diagnostic.SA1313.severity = none
+dotnet_diagnostic.SA1009.severity = none
+dotnet_diagnostic.CA1034.severity = none
+
+# Медиатор: IRequest<T> — намеренный маркерный интерфейс (CA1040),
+# RequestHandlerDelegate — намеренное имя делегата конвейера (CA1711).
+[**/Messaging/**.cs]
+dotnet_diagnostic.CA1040.severity = none
+dotnet_diagnostic.CA1711.severity = none
+
+# Медиатор и поведения конвейера инстанцируются через DI и рефлексию
+# (AddEngineApplication, Activator.CreateInstance), поэтому анализатор не видит
+# создание экземпляров и ложно срабатывает CA1812.
+[**/{Messaging,Behaviors}/**.cs]
+dotnet_diagnostic.CA1812.severity = none
+
+# SignalR-хабы и нотификаторы инстанцируются SignalR/DI через рефлексию,
+# поэтому анализатор не видит их создание и ложно срабатывает CA1812.
+[**/Hubs/*.cs]
+dotnet_diagnostic.CA1812.severity = none
+
+# Типизированные HTTP-клиенты создаются IHttpClientFactory через рефлексию,
+# поэтому анализатор не видит их создание и ложно срабатывает CA1812.
+[**/Clients/*.cs]
+dotnet_diagnostic.CA1812.severity = none
+
+# DTO-модели ответов (например EmbedResponse) десериализуются System.Text.Json
+# через рефлексию, поэтому анализатор не видит их создание и ложно срабатывает
+# CA1812. Кроме того, SA1201 (StyleCop 1.1.118) предшествует record-типам и
+# падает с KeyNotFoundException('RecordDeclaration') на вложенном record —
+# отключаем правило, чтобы анализатор не аварийно завершался (AD0001).
+[**/Services/*.cs]
+dotnet_diagnostic.CA1812.severity = none
+dotnet_diagnostic.SA1201.severity = none
+
+[*]
+
+# Microsoft .NET properties
+csharp_preferred_modifier_order = public, protected, internal, private, static, new, abstract, virtual, override, sealed, readonly, extern, unsafe, volatile, async:suggestion
+csharp_style_prefer_utf8_string_literals = true:suggestion
+csharp_style_var_elsewhere = true:suggestion
+csharp_style_var_for_built_in_types = true:suggestion
+csharp_style_var_when_type_is_apparent = true:suggestion
+csharp_using_directive_placement = inside_namespace:silent
+dotnet_separate_import_directive_groups = true
+dotnet_style_parentheses_in_arithmetic_binary_operators = never_if_unnecessary:warning
+dotnet_style_parentheses_in_other_binary_operators = always_for_clarity:warning
+dotnet_style_parentheses_in_relational_binary_operators = never_if_unnecessary:warning
+dotnet_style_predefined_type_for_locals_parameters_members = true:suggestion
+dotnet_style_predefined_type_for_member_access = true:suggestion
+dotnet_style_qualification_for_event = true:warning
+dotnet_style_qualification_for_field = true:warning
+dotnet_style_qualification_for_method = true:warning
+dotnet_style_qualification_for_property = true:warning
+dotnet_style_require_accessibility_modifiers = for_non_interface_members:suggestion
+
+# ReSharper properties
+resharper_align_linq_query = true
+resharper_align_multiline_expression = true
+resharper_align_multiline_extends_list = true
+resharper_align_multiline_for_stmt = true
+resharper_align_multiline_type_parameter_constraints = true
+resharper_align_multiline_type_parameter_list = true
+resharper_apply_auto_detected_rules = false
+resharper_apply_on_completion = true
+# Приватные поля экземпляра — camelCase без подчёркивания: StyleCop SA1309
+# запрещает префикс _, а доступ к полям идёт через this. (dotnet_style_qualification_for_field).
+resharper_csharp_naming_rule.private_instance_fields = aaBb
+resharper_csharp_naming_rule.private_static_fields = aaBb
+resharper_blank_lines_around_single_line_auto_property = 1
+resharper_blank_lines_around_single_line_property = 1
+resharper_blank_lines_before_single_line_comment = 1
+resharper_csharp_align_multiline_parameter = true
+resharper_csharp_align_multiple_declaration = true
+resharper_csharp_allow_alias = false
+resharper_csharp_blank_lines_around_single_line_field = 1
+resharper_csharp_blank_lines_around_single_line_invocable = 1
+resharper_csharp_keep_blank_lines_in_code = 1
+resharper_csharp_keep_blank_lines_in_declarations = 1
+resharper_csharp_new_line_before_while = true
+resharper_csharp_stick_comment = false
+resharper_csharp_wrap_after_declaration_lpar = true
+resharper_csharp_wrap_after_invocation_lpar = true
+resharper_csharp_wrap_arguments_style = chop_if_long
+resharper_csharp_wrap_before_binary_opsign = true
+resharper_csharp_wrap_chained_method_calls = chop_if_long
+resharper_csharp_wrap_extends_list_style = chop_if_long
+resharper_csharp_wrap_parameters_style = chop_if_long
+resharper_event_handler_pattern_long = $object$_On$event$
+resharper_event_handler_pattern_short = $event$Handler
+resharper_keep_existing_expr_member_arrangement = false
+resharper_keep_existing_initializer_arrangement = false
+resharper_keep_existing_linebreaks = false
+resharper_keep_existing_list_patterns_arrangement = false
+resharper_keep_nontrivial_alias = true
+resharper_max_enum_members_on_line = 4
+resharper_max_initializer_elements_on_line = 3
+resharper_modifiers_order = public protected internal private static new abstract virtual override sealed readonly extern unsafe volatile async
+resharper_nested_ternary_style = expanded
+resharper_place_accessorholder_attribute_on_same_line = false
+resharper_place_constructor_initializer_on_same_line = false
+resharper_place_field_attribute_on_same_line = false
+resharper_place_simple_accessor_on_single_line = false
+resharper_place_simple_embedded_statement_on_same_line = true
+resharper_place_simple_enum_on_single_line = true
+resharper_place_single_method_argument_lambda_on_same_line = false
+resharper_place_type_constraints_on_same_line = false
+resharper_qualified_using_at_nested_scope = true
+resharper_wrap_array_initializer_style = chop_if_long
+resharper_wrap_before_extends_colon = true
+resharper_wrap_before_first_type_parameter_constraint = true
+resharper_wrap_chained_binary_expressions = chop_if_long
+resharper_wrap_multiple_type_parameter_constraints_style = chop_always
+
+# ReSharper inspection severities
+resharper_arrange_accessor_owner_body_highlighting = hint
+resharper_arrange_redundant_parentheses_highlighting = hint
+resharper_arrange_type_member_modifiers_highlighting = none
+resharper_arrange_type_modifiers_highlighting = hint
+resharper_bad_attribute_brackets_spaces_highlighting = warning
+resharper_bad_braces_spaces_highlighting = warning
+resharper_bad_colon_spaces_highlighting = warning
+resharper_bad_comma_spaces_highlighting = warning
+resharper_bad_control_braces_line_breaks_highlighting = warning
+resharper_bad_declaration_braces_indent_highlighting = warning
+resharper_bad_declaration_braces_line_breaks_highlighting = warning
+resharper_bad_empty_braces_line_breaks_highlighting = warning
+resharper_bad_expression_braces_line_breaks_highlighting = warning
+resharper_bad_generic_brackets_spaces_highlighting = warning
+resharper_bad_indent_highlighting = warning
+resharper_bad_linq_line_breaks_highlighting = warning
+resharper_bad_list_line_breaks_highlighting = warning
+resharper_bad_member_access_spaces_highlighting = warning
+resharper_bad_namespace_braces_indent_highlighting = warning
+resharper_bad_parens_line_breaks_highlighting = warning
+resharper_bad_parens_spaces_highlighting = warning
+resharper_bad_preprocessor_indent_highlighting = warning
+resharper_bad_semicolon_spaces_highlighting = warning
+resharper_bad_spaces_after_keyword_highlighting = warning
+resharper_bad_square_brackets_spaces_highlighting = warning
+resharper_bad_switch_braces_indent_highlighting = warning
+resharper_bad_symbol_spaces_highlighting = warning
+resharper_built_in_type_reference_style_for_member_access_highlighting = hint
+resharper_built_in_type_reference_style_highlighting = hint
+resharper_class_can_be_sealed_global_highlighting = warning
+resharper_class_can_be_sealed_local_highlighting = warning
+resharper_incorrect_blank_lines_near_braces_highlighting = warning
+resharper_inheritdoc_consider_usage_highlighting = hint
+resharper_inline_out_variable_declaration_highlighting = hint
+resharper_internal_or_private_member_not_documented_highlighting = warning
+resharper_local_function_can_be_made_static_highlighting = warning
+resharper_member_can_be_internal_highlighting = warning
+resharper_missing_blank_lines_highlighting = warning
+resharper_missing_indent_highlighting = hint
+resharper_missing_linebreak_highlighting = warning
+resharper_missing_space_highlighting = warning
+resharper_multiple_spaces_highlighting = warning
+resharper_multiple_statements_on_one_line_highlighting = warning
+resharper_multiple_type_members_on_one_line_highlighting = warning
+resharper_outdent_is_off_prev_level_highlighting = warning
+resharper_parameter_type_can_be_enumerable_local_highlighting = suggestion
+resharper_redundant_blank_lines_highlighting = warning
+resharper_redundant_empty_object_creation_argument_list_highlighting = suggestion
+resharper_redundant_linebreak_highlighting = warning
+resharper_redundant_space_highlighting = warning
+resharper_style_cop_sa1008_highlighting = hint
+resharper_style_cop_sa1623_highlighting = none
+resharper_style_cop_sa1625_highlighting = hint
+resharper_style_cop_sa1630_highlighting = hint
+resharper_style_cop_sa1631_highlighting = suggestion
+resharper_style_cop_sa1633_highlighting = none
+resharper_style_cop_sa1642_highlighting = none
+resharper_suggest_var_or_type_built_in_types_highlighting = hint
+resharper_suggest_var_or_type_elsewhere_highlighting = hint
+resharper_suggest_var_or_type_simple_types_highlighting = hint
+resharper_tabs_and_spaces_mismatch_highlighting = warning
+resharper_tabs_outside_indent_highlighting = warning
+resharper_unnecessary_whitespace_highlighting = warning
+resharper_unused_member_global_highlighting = warning
+resharper_use_collection_expression_highlighting = hint
+resharper_use_string_interpolation_highlighting = hint
+resharper_wrong_indent_size_highlighting = warning

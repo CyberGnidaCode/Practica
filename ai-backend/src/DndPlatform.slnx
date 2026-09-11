@@ -1,0 +1,20 @@
+<Solution>
+  <Folder Name="/Application/">
+    <Project Path="DndPlatform.Application/DndPlatform.Application.csproj" />
+  </Folder>
+  <Folder Name="/Domain/">
+    <Project Path="DndPlatform.Domain/DndPlatform.Domain.csproj" />
+  </Folder>
+  <Folder Name="/Infrastructure/">
+    <Project Path="DndPlatform.Infrastructure/DndPlatform.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/Storage/">
+    <Project Path="DndPlatform.Persistence/DndPlatform.Persistence.csproj" />
+  </Folder>
+  <Folder Name="/Web/">
+    <Project Path="DndPlatform.Api/DndPlatform.Api.csproj" />
+  </Folder>
+  <Project Path="docker-compose.dcproj">
+    <Build />
+  </Project>
+</Solution>

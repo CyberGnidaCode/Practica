@@ -1,0 +1,15 @@
+<Solution>
+  <Folder Name="/Application/">
+    <Project Path="Engine.Application/Engine.Application.csproj" />
+  </Folder>
+  <Folder Name="/Domain/">
+    <Project Path="Engine.Domain/Engine.Domain.csproj" />
+  </Folder>
+  <Folder Name="/Infrastructure/">
+    <Project Path="Engine.Infrastructure/Engine.Infrastructure.csproj" />
+    <Project Path="Engine.VectorDBContext/Engine.VectorDBContext.csproj" />
+  </Folder>
+  <Folder Name="/Web/">
+    <Project Path="Engine.Api/Engine.Api.csproj" />
+  </Folder>
+</Solution>

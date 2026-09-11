@@ -1,0 +1,6 @@
+ai-engine/
+ai-backend/
+.git/
+.vs/
+__pycache__/
+*.pyc

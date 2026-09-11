@@ -1,0 +1,2083 @@
+{
+  "tables": [
+    {
+      "id": "ot7QW1hD4ZMyGXoXvLBlh",
+      "name": "Users",
+      "x": -2499.65639237286,
+      "y": -79.7849127105379,
+      "locked": false,
+      "fields": [
+        {
+          "name": "Id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "unsigned": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": "fK81TBT8RuO82z7qEG06x",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "p6sPlTOJN2YxZYrz5QCfW",
+          "name": "Login",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "ZmICo-1BXRAjNVpibx1yF",
+          "name": "Password",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "lQOD-AGe0odi8YYw3d2tE",
+          "name": "Email",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "j4uTUBgqdZsDesg_ohXJJ",
+          "name": "Balance",
+          "type": "DECIMAL",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "9eyzSW3jVw1OTjvvHN6tr",
+          "name": "DateCreate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "ou6_gdJHLNFlpOXpzzVrf",
+          "name": "DateUpdate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#175e7a",
+      "collapsed": false
+    },
+    {
+      "id": "iPSKM1eyGRVhbs18qTyVo",
+      "name": "News",
+      "x": -293.3568367993407,
+      "y": -564.4852019508331,
+      "locked": false,
+      "fields": [
+        {
+          "name": "Id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "unsigned": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": "nxplLsAZUq8K9zMeVQgdT",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "AAqwDpZtdvFLo43UlDqea",
+          "name": "Name",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "gE2C1lriZxFwTbxDhPg7M",
+          "name": "Description",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "Wr_q1XZ5jDYn-pa3yZsd3",
+          "name": "Arcticle",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "pg8ErmZtA7tGhXRXGI3E9",
+          "name": "DateCreate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "uHLgyVMlQu6NXhD8CtCZd",
+          "name": "DateUpdate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#175e7a",
+      "collapsed": false
+    },
+    {
+      "id": "t5EIURnZh8vlN1n3-YK_j",
+      "name": "Templates",
+      "x": -1555.2221238845714,
+      "y": 607.4559487556177,
+      "locked": false,
+      "fields": [
+        {
+          "name": "Id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "unsigned": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": "tL0GOm4z12f5NDm9o2QzB",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "ZaE6LZcODrVmIb5WqX2bq",
+          "name": "Name",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "0V9AIwSbundocA2qzY5r3",
+          "name": "Desription",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "vhNGy7DpCCenedSK7nGeI",
+          "name": "Setting",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "F3BhdPV3XaQuwbG3aN9Vj",
+          "name": "RedFlag",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "mDsgMn4JRk0rpINj2f6W5",
+          "name": "IsPublic",
+          "type": "BOOLEAN",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "v3yFo7AsVtcgFCGjV_jEn",
+          "name": "DateCreate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "VzCs3E6tLaRSJ7YKYtYks",
+          "name": "DateUpdate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#175e7a",
+      "collapsed": false
+    },
+    {
+      "id": "UDjyyIdPCzxYQLYeFX1Qo",
+      "name": "Genres",
+      "x": -124.15676486664893,
+      "y": 357.1407730996318,
+      "locked": false,
+      "fields": [
+        {
+          "name": "Id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "unsigned": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": "z85WvCP-tRREa4BwlB6UW",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "Rnek34xNO3Y5TkYlKuHix",
+          "name": "Name",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "snir6_Om2NHvIszaRneJH",
+          "name": "Code",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "93ARvL1x3CL5D2dd6yIym",
+          "name": "DateCreate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "83A0f7dZvj190YHqC48vQ",
+          "name": "DateUpdate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#cfc736",
+      "collapsed": false
+    },
+    {
+      "id": "3ovKw8-1dbOQ8CQ4jmZrp",
+      "name": "TemplatesGenres",
+      "x": -735.4861682263786,
+      "y": 390.0868129872647,
+      "locked": false,
+      "fields": [
+        {
+          "name": "Id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "unsigned": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": "tL0GOm4z12f5NDm9o2QzB",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "ZaE6LZcODrVmIb5WqX2bq",
+          "name": "TemplateId",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "0V9AIwSbundocA2qzY5r3",
+          "name": "GenreId",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "v3yFo7AsVtcgFCGjV_jEn",
+          "name": "DateCreate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "VzCs3E6tLaRSJ7YKYtYks",
+          "name": "DateUpdate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [
+        {
+          "id": 0,
+          "name": "IX_GameGenres_TemplateId",
+          "unique": false,
+          "fields": [
+            "TemplateId"
+          ]
+        },
+        {
+          "id": 1,
+          "name": "IX_GameGenres_GenreId",
+          "unique": false,
+          "fields": [
+            "GenreId"
+          ]
+        }
+      ],
+      "color": "#177a75",
+      "collapsed": false
+    },
+    {
+      "id": "QV8Yifm0y-wlwl_bRVCMY",
+      "name": "Games",
+      "x": -1610.2679761027052,
+      "y": -69.07096621946624,
+      "locked": false,
+      "fields": [
+        {
+          "name": "Id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "unsigned": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": "tL0GOm4z12f5NDm9o2QzB",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "EKp0dTJLjFy62nIsocCSk",
+          "name": "TemplateId",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "GZ0Mb8onP1Gho8P3MShT_",
+          "name": "GameStatusId",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "VHmLzDZjfZ6mLGqiP5J8v",
+          "name": "MasterId",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "v3yFo7AsVtcgFCGjV_jEn",
+          "name": "DateCreate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "VzCs3E6tLaRSJ7YKYtYks",
+          "name": "DateUpdate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [
+        {
+          "id": 0,
+          "name": "IX_Games_TemplateId",
+          "unique": false,
+          "fields": [
+            "TemplateId"
+          ]
+        },
+        {
+          "id": 1,
+          "name": "IX_Games_MasterId",
+          "unique": false,
+          "fields": [
+            "MasterId"
+          ]
+        },
+        {
+          "id": 2,
+          "name": "IX_Games_GameStatusId",
+          "unique": false,
+          "fields": [
+            "GameStatusId"
+          ]
+        }
+      ],
+      "color": "#175e7a",
+      "collapsed": false
+    },
+    {
+      "id": "KxCg5tWg_FVEAPZpcF3q1",
+      "name": "GameStatuses",
+      "x": -1059.787830548679,
+      "y": 37.6903325257868,
+      "locked": false,
+      "fields": [
+        {
+          "name": "Id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "unsigned": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": "z85WvCP-tRREa4BwlB6UW",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "Rnek34xNO3Y5TkYlKuHix",
+          "name": "Name",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "snir6_Om2NHvIszaRneJH",
+          "name": "Code",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "93ARvL1x3CL5D2dd6yIym",
+          "name": "DateCreate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "83A0f7dZvj190YHqC48vQ",
+          "name": "DateUpdate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#cfc736",
+      "collapsed": false
+    },
+    {
+      "id": "DRERuqlSxx8YF-oauOMO-",
+      "name": "FavoriteTemplates",
+      "x": -2261.7536440373397,
+      "y": 528.652108021004,
+      "locked": false,
+      "fields": [
+        {
+          "name": "Id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "unsigned": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": "tL0GOm4z12f5NDm9o2QzB",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "ZaE6LZcODrVmIb5WqX2bq",
+          "name": "UserId",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "0V9AIwSbundocA2qzY5r3",
+          "name": "TemplateId",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "v3yFo7AsVtcgFCGjV_jEn",
+          "name": "DateCreate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "VzCs3E6tLaRSJ7YKYtYks",
+          "name": "DateUpdate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [
+        {
+          "id": 0,
+          "name": "IX_FavoriteTemplates_UserId_TemplateId",
+          "unique": true,
+          "fields": [
+            "UserId",
+            "TemplateId"
+          ]
+        }
+      ],
+      "color": "#177a75",
+      "collapsed": false
+    },
+    {
+      "id": "tuZNhbHXhXY9rp_nlh6c6",
+      "name": "Masters",
+      "x": -2493.1099748436272,
+      "y": -519.3169405423981,
+      "locked": false,
+      "fields": [
+        {
+          "name": "Id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "unsigned": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": "tL0GOm4z12f5NDm9o2QzB",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "QVcUaRg6XK7tecHZRJXIA",
+          "name": "Name",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "H2vUSmrhHdqPO-WKL1gH9",
+          "name": "Description",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "v3yFo7AsVtcgFCGjV_jEn",
+          "name": "DateCreate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "VzCs3E6tLaRSJ7YKYtYks",
+          "name": "DateUpdate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#175e7a",
+      "collapsed": false
+    },
+    {
+      "id": "NSfG9MMChVClJJ8zH2ktB",
+      "name": "CharacterTemplates",
+      "x": -2953.117104346773,
+      "y": -112.43130046642892,
+      "locked": false,
+      "fields": [
+        {
+          "name": "Id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "unsigned": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": "tL0GOm4z12f5NDm9o2QzB",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "ATh6k9JuxUFxktqX6PMKX",
+          "name": "Name",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "heyaQjyvkAPMBKtzynXVE",
+          "name": "Description",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "f-AX4y8E3354NUCm_fyIq",
+          "name": "Race",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "B4TWy2uTwrNXC-I2bKqgO",
+          "name": "Hp",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "1T7JjYXRGmBBHWVsdX0uA",
+          "name": "Power",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "xEeFKKjs0eC3iH-ux980-",
+          "name": "Agility",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "-awrATFw6kmJjrPQOMR10",
+          "name": "Physique",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "j3cEAHhJhCQoq7oVG9sJ3",
+          "name": "Intelligence",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "l21KqnGpZWORRgsAtia76",
+          "name": "Wisdom",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "dEHHGCDlmwq8G-7yqb2KC",
+          "name": "Charisma",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "C5FeXwdRpaMF1OobCwJ1O",
+          "name": "GenderId",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "FPdpo-mKBgqVD6Cqj65nw",
+          "name": "UserId",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "v3yFo7AsVtcgFCGjV_jEn",
+          "name": "DateCreate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "VzCs3E6tLaRSJ7YKYtYks",
+          "name": "DateUpdate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [
+        {
+          "id": 0,
+          "name": "IX_CharacterTemplates_UserId",
+          "unique": false,
+          "fields": [
+            "UserId"
+          ]
+        },
+        {
+          "id": 1,
+          "name": "IX_CharacterTemplates_GenderId",
+          "unique": false,
+          "fields": [
+            "GenderId"
+          ]
+        }
+      ],
+      "color": "#175e7a",
+      "collapsed": false
+    },
+    {
+      "id": "3elBWDWOfQYuHzZik8EGc",
+      "name": "Genders",
+      "x": -3635.269082770013,
+      "y": -58.26961520857128,
+      "locked": false,
+      "fields": [
+        {
+          "name": "Id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "unsigned": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": "z85WvCP-tRREa4BwlB6UW",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "Rnek34xNO3Y5TkYlKuHix",
+          "name": "Name",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "snir6_Om2NHvIszaRneJH",
+          "name": "Code",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "93ARvL1x3CL5D2dd6yIym",
+          "name": "DateCreate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "83A0f7dZvj190YHqC48vQ",
+          "name": "DateUpdate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#cfc736",
+      "collapsed": false
+    },
+    {
+      "id": "jGoPk6AnQHJT0sYHcTTSv",
+      "name": "Characters",
+      "x": -1314.1877854507816,
+      "y": -860.5375847237932,
+      "locked": false,
+      "fields": [
+        {
+          "name": "Id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "unsigned": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": "tL0GOm4z12f5NDm9o2QzB",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "ATh6k9JuxUFxktqX6PMKX",
+          "name": "Name",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "heyaQjyvkAPMBKtzynXVE",
+          "name": "Description",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "f-AX4y8E3354NUCm_fyIq",
+          "name": "Race",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "B4TWy2uTwrNXC-I2bKqgO",
+          "name": "Hp",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "1T7JjYXRGmBBHWVsdX0uA",
+          "name": "Power",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "xEeFKKjs0eC3iH-ux980-",
+          "name": "Agility",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "-awrATFw6kmJjrPQOMR10",
+          "name": "Physique",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "j3cEAHhJhCQoq7oVG9sJ3",
+          "name": "Intelligence",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "l21KqnGpZWORRgsAtia76",
+          "name": "Wisdom",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "dEHHGCDlmwq8G-7yqb2KC",
+          "name": "Charisma",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "FPdpo-mKBgqVD6Cqj65nw",
+          "name": "UserId",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "C5FeXwdRpaMF1OobCwJ1O",
+          "name": "GameId",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "v3yFo7AsVtcgFCGjV_jEn",
+          "name": "DateCreate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "VzCs3E6tLaRSJ7YKYtYks",
+          "name": "DateUpdate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [
+        {
+          "id": 0,
+          "name": "IX_Characters_UserId_GameId",
+          "unique": false,
+          "fields": [
+            "UserId",
+            "GameId"
+          ]
+        }
+      ],
+      "color": "#175e7a",
+      "collapsed": false
+    },
+    {
+      "id": "aDiFf9FAUWdkFC-5loIdt",
+      "name": "UsersGames",
+      "x": -2054.679388447536,
+      "y": 209.81305686820508,
+      "locked": false,
+      "fields": [
+        {
+          "name": "Id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "unsigned": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": "fK81TBT8RuO82z7qEG06x",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "p6sPlTOJN2YxZYrz5QCfW",
+          "name": "UserId",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "ZmICo-1BXRAjNVpibx1yF",
+          "name": "GameId",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "9eyzSW3jVw1OTjvvHN6tr",
+          "name": "DateCreate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "ou6_gdJHLNFlpOXpzzVrf",
+          "name": "DateUpdate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [
+        {
+          "id": 0,
+          "name": "IX_UsersGames_UserId",
+          "unique": false,
+          "fields": [
+            "UserId"
+          ]
+        },
+        {
+          "id": 1,
+          "name": "IX_UsersGames_GameId",
+          "unique": false,
+          "fields": [
+            "GameId"
+          ]
+        }
+      ],
+      "color": "#175e7a",
+      "collapsed": false,
+      "inherits": []
+    },
+    {
+      "id": "Ga28Hiofrvm7VgEPfrIvM",
+      "name": "Chats",
+      "x": -882.4026968903115,
+      "y": -320.9227678766537,
+      "locked": false,
+      "fields": [
+        {
+          "name": "Id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "unsigned": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": "tL0GOm4z12f5NDm9o2QzB",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "SId4GPA7S-IzPG1xxNBl9",
+          "name": "GameId",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "H3TQmggzFs3eiaDJSiWbB",
+          "name": "DateCreate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "nk7HP-osMuS6jZN5UY_T9",
+          "name": "DateUpdate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [
+        {
+          "id": 0,
+          "name": "IX_Chats_GameId",
+          "unique": false,
+          "fields": [
+            "GameId"
+          ]
+        }
+      ],
+      "color": "#175e7a",
+      "collapsed": false
+    },
+    {
+      "id": "a_SanqvAyiHc2t6Zseuxa",
+      "name": "Messages",
+      "x": -362.03766635811724,
+      "y": -193.23273229420857,
+      "locked": false,
+      "fields": [
+        {
+          "name": "Id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "unsigned": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": "tL0GOm4z12f5NDm9o2QzB",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "SId4GPA7S-IzPG1xxNBl9",
+          "name": "ChatId",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "5OxhhLX5zo5WhFItFveUy",
+          "name": "UserId",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "YM7yBXvG5lOEMv5c84a5p",
+          "name": "SenderTypeId",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "tqdx-hyTWc9jpvvBugW2i",
+          "name": "Text",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "LXArNjtc2oiEwq2GvnSXg",
+          "name": "DateCreate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "YJuAhUnJqxBpyJay8goOw",
+          "name": "DateUpdate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [
+        {
+          "id": 0,
+          "name": "IX_Messages_ChatId",
+          "unique": false,
+          "fields": [
+            "ChatId"
+          ]
+        },
+        {
+          "id": 1,
+          "name": "IX_Messages_UserId",
+          "unique": false,
+          "fields": [
+            "UserId"
+          ]
+        },
+        {
+          "id": 2,
+          "name": "IX_Messages_SenderTypeId",
+          "unique": false,
+          "fields": [
+            "SenderTypeId"
+          ]
+        }
+      ],
+      "color": "#175e7a",
+      "collapsed": false
+    },
+    {
+      "id": "nMZakFDZi_TZbl1LBAfDS",
+      "name": "SenderTypes",
+      "x": 157.93598909850527,
+      "y": -193.14875946676477,
+      "locked": false,
+      "fields": [
+        {
+          "name": "Id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "unsigned": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": "z85WvCP-tRREa4BwlB6UW",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "Rnek34xNO3Y5TkYlKuHix",
+          "name": "Name",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "snir6_Om2NHvIszaRneJH",
+          "name": "Code",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "93ARvL1x3CL5D2dd6yIym",
+          "name": "DateCreate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "83A0f7dZvj190YHqC48vQ",
+          "name": "DateUpdate",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#cfc736",
+      "collapsed": false
+    }
+  ],
+  "relationships": [
+    {
+      "startTableId": "DRERuqlSxx8YF-oauOMO-",
+      "startFieldId": "ZaE6LZcODrVmIb5WqX2bq",
+      "endTableId": "ot7QW1hD4ZMyGXoXvLBlh",
+      "endFieldId": "fK81TBT8RuO82z7qEG06x",
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_FavoriteTemplates_UserId_Users",
+      "id": "F5-kEcYvtQ3vpN1uFCNRb"
+    },
+    {
+      "startTableId": "NSfG9MMChVClJJ8zH2ktB",
+      "startFieldId": "FPdpo-mKBgqVD6Cqj65nw",
+      "endTableId": "ot7QW1hD4ZMyGXoXvLBlh",
+      "endFieldId": "fK81TBT8RuO82z7qEG06x",
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_CharacterTemplates_UserId_Users",
+      "id": "FXzwVwz0EjjlKd-DCGSoG"
+    },
+    {
+      "startTableId": "jGoPk6AnQHJT0sYHcTTSv",
+      "startFieldId": "FPdpo-mKBgqVD6Cqj65nw",
+      "endTableId": "ot7QW1hD4ZMyGXoXvLBlh",
+      "endFieldId": "fK81TBT8RuO82z7qEG06x",
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_Characters_UserId_Users",
+      "id": "33dxQbTOkcnbS4oDhMwR6"
+    },
+    {
+      "startTableId": "jGoPk6AnQHJT0sYHcTTSv",
+      "startFieldId": "C5FeXwdRpaMF1OobCwJ1O",
+      "endTableId": "QV8Yifm0y-wlwl_bRVCMY",
+      "endFieldId": "tL0GOm4z12f5NDm9o2QzB",
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_Characters_GameId_Games",
+      "id": "mzIuNRTzQF1lVQno3hJwq"
+    },
+    {
+      "startTableId": "3ovKw8-1dbOQ8CQ4jmZrp",
+      "startFieldId": "ZaE6LZcODrVmIb5WqX2bq",
+      "endTableId": "t5EIURnZh8vlN1n3-YK_j",
+      "endFieldId": "tL0GOm4z12f5NDm9o2QzB",
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_TemplatesGenres_TemplateId_Templates",
+      "id": "jbL7tgHEeT0rmHJwxPVtM"
+    },
+    {
+      "startTableId": "QV8Yifm0y-wlwl_bRVCMY",
+      "startFieldId": "GZ0Mb8onP1Gho8P3MShT_",
+      "endTableId": "KxCg5tWg_FVEAPZpcF3q1",
+      "endFieldId": "z85WvCP-tRREa4BwlB6UW",
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_Games_GameStatusId_GameStatuses",
+      "id": "99Yr8XU7ce1O_dMiRdHdY"
+    },
+    {
+      "startTableId": "3ovKw8-1dbOQ8CQ4jmZrp",
+      "startFieldId": "0V9AIwSbundocA2qzY5r3",
+      "endTableId": "UDjyyIdPCzxYQLYeFX1Qo",
+      "endFieldId": "z85WvCP-tRREa4BwlB6UW",
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_TemplatesGenres_GenreId_Genres",
+      "id": "SRoevok0J47E8luHMHiRO"
+    },
+    {
+      "startTableId": "QV8Yifm0y-wlwl_bRVCMY",
+      "startFieldId": "VHmLzDZjfZ6mLGqiP5J8v",
+      "endTableId": "tuZNhbHXhXY9rp_nlh6c6",
+      "endFieldId": "tL0GOm4z12f5NDm9o2QzB",
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_Games_MasterId_Masters",
+      "id": "vULNXTY7lWKZL66hMxA2c"
+    },
+    {
+      "startTableId": "QV8Yifm0y-wlwl_bRVCMY",
+      "startFieldId": "EKp0dTJLjFy62nIsocCSk",
+      "endTableId": "t5EIURnZh8vlN1n3-YK_j",
+      "endFieldId": "tL0GOm4z12f5NDm9o2QzB",
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_Games_TemplateId_Templates",
+      "id": "KqKOtBUTKvz4q0i_rtukJ"
+    },
+    {
+      "startTableId": "DRERuqlSxx8YF-oauOMO-",
+      "startFieldId": "0V9AIwSbundocA2qzY5r3",
+      "endTableId": "t5EIURnZh8vlN1n3-YK_j",
+      "endFieldId": "tL0GOm4z12f5NDm9o2QzB",
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_FavoriteTemplates_TemplateId_Templates",
+      "id": "1sBdmYaJcyNFdU2lITwZQ"
+    },
+    {
+      "startTableId": "NSfG9MMChVClJJ8zH2ktB",
+      "startFieldId": "C5FeXwdRpaMF1OobCwJ1O",
+      "endTableId": "3elBWDWOfQYuHzZik8EGc",
+      "endFieldId": "z85WvCP-tRREa4BwlB6UW",
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_CharacterTemplates_GenderId_Genders",
+      "id": "FY_3d9UEtELUpabbeRIX3"
+    },
+    {
+      "startTableId": "Ga28Hiofrvm7VgEPfrIvM",
+      "startFieldId": "SId4GPA7S-IzPG1xxNBl9",
+      "endTableId": "QV8Yifm0y-wlwl_bRVCMY",
+      "endFieldId": "tL0GOm4z12f5NDm9o2QzB",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "SId4GPA7S-IzPG1xxNBl9",
+          "endFieldId": "tL0GOm4z12f5NDm9o2QzB"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_Chats_GameId_Games",
+      "id": "5AdJYrgaSwxyk-fQT_Guf"
+    },
+    {
+      "startTableId": "a_SanqvAyiHc2t6Zseuxa",
+      "startFieldId": "SId4GPA7S-IzPG1xxNBl9",
+      "endTableId": "Ga28Hiofrvm7VgEPfrIvM",
+      "endFieldId": "tL0GOm4z12f5NDm9o2QzB",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "SId4GPA7S-IzPG1xxNBl9",
+          "endFieldId": "tL0GOm4z12f5NDm9o2QzB"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_Messages_ChatId_Chats",
+      "id": "kdDh2mUBjkQzbDaWXNXEA"
+    },
+    {
+      "startTableId": "aDiFf9FAUWdkFC-5loIdt",
+      "startFieldId": "p6sPlTOJN2YxZYrz5QCfW",
+      "endTableId": "ot7QW1hD4ZMyGXoXvLBlh",
+      "endFieldId": "fK81TBT8RuO82z7qEG06x",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "p6sPlTOJN2YxZYrz5QCfW",
+          "endFieldId": "fK81TBT8RuO82z7qEG06x"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_UsersGames_UserId_Users",
+      "id": "kaoOHS2IMKJtz8WqiSBlp"
+    },
+    {
+      "startTableId": "aDiFf9FAUWdkFC-5loIdt",
+      "startFieldId": "ZmICo-1BXRAjNVpibx1yF",
+      "endTableId": "QV8Yifm0y-wlwl_bRVCMY",
+      "endFieldId": "tL0GOm4z12f5NDm9o2QzB",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "ZmICo-1BXRAjNVpibx1yF",
+          "endFieldId": "tL0GOm4z12f5NDm9o2QzB"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_UsersGames_GameId_Games",
+      "id": "at-iFl20t-BgnKkeC4ulQ"
+    },
+    {
+      "startTableId": "a_SanqvAyiHc2t6Zseuxa",
+      "startFieldId": "YM7yBXvG5lOEMv5c84a5p",
+      "endTableId": "nMZakFDZi_TZbl1LBAfDS",
+      "endFieldId": "z85WvCP-tRREa4BwlB6UW",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "YM7yBXvG5lOEMv5c84a5p",
+          "endFieldId": "z85WvCP-tRREa4BwlB6UW"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_Messages_SenderTypeId_SenderTypes",
+      "id": "karef3CoWfLjgvYpBTvc6"
+    }
+  ],
+  "notes": [],
+  "subjectAreas": [],
+  "database": "postgresql",
+  "types": [],
+  "enums": [],
+  "title": "ai_backend"
+}

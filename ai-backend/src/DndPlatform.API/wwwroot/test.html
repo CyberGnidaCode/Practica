@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ChatHub — тест</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.7/signalr.min.js"></script>
+  <style>
+    :root {
+      --page: #3b3d3d;
+      --header: #29282c;
+      --panel: #242126;
+      --panel-soft: #2d2a2e;
+      --line: #555554;
+      --gold: #b58b55;
+      --gold-light: #c59a62;
+      --text: #f2eef1;
+      --muted: #aaa4a8;
+      --green: #46b864;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { height: 100%; }
+
+    body {
+      margin: 0;
+      overflow: hidden;
+      color: var(--text);
+      background: radial-gradient(circle at 50% 45%, #414343 0, var(--page) 62%, #353737 100%);
+      font: 14px/1.4 Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+
+    button, input { font: inherit; }
+
+    .topbar {
+      height: 50px;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      background: linear-gradient(180deg, #2c2b2f, var(--header));
+      border-bottom: 1px solid #424145;
+      box-shadow: 0 2px 12px #17161955;
+      position: relative;
+      z-index: 3;
+    }
+
+    .brand { width: 45px; height: 29px; background: #75624d; }
+    .top-actions { margin-left: auto; display: flex; align-items: center; gap: 20px; }
+    .balance {
+      padding: 6px 13px;
+      border: 1px solid #777175;
+      border-radius: 14px;
+      background: #2d2a2d;
+      font-size: 15px;
+    }
+    .balance::before { content: "+"; color: var(--gold); margin-right: 14px; font-weight: 700; }
+    .avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      display: grid; place-items: center;
+      color: #725d67; background: linear-gradient(135deg, #e6d8dc, #c9bed8);
+      border: 2px solid #eee6e8; font-weight: 700;
+    }
+
+    .app {
+      height: calc(100% - 50px);
+      display: grid;
+      grid-template-columns: 150px 1412px 250px;
+      justify-content: space-between;
+    }
+
+    .leftbar {
+      padding-top: 5px;
+    }
+
+    .summary-button {
+      width: calc(100% - 16px);
+      height: 48px;
+      border: 1px solid #56535a;
+      border-radius: 0 10px 10px 0;
+      color: var(--muted);
+      background: var(--panel-soft);
+      cursor: pointer;
+    }
+    .players {
+      min-height: 187px;
+      margin-top: 0;
+      padding: 24px 22px;
+      border-radius: 0 9px 9px 0;
+      background: var(--panel);
+    }
+    .player { display: grid; grid-template-columns: 30px 1fr; gap: 12px; align-items: center; margin-bottom: 15px; font-size: 12px; }
+    .player-avatar { width: 27px; height: 27px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(135deg, #933b87, #e49dca); }
+    .player:nth-child(2) .player-avatar { background: linear-gradient(135deg, #e6d8dc, #bcb4d4); }
+
+    main {
+      min-width: 0;
+      margin: 0 0 76px;
+      padding-top: 32px;
+      border: 1px solid #4b4d4e;
+      border-top: 0;
+      border-radius: 0 0 10px 10px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      background: #3b3d3d55;
+      transition: background-color .35s ease, box-shadow .35s ease;
+    }
+    main.message-open {
+      background: #3b3d3ddd;
+      box-shadow: inset 0 0 45px #1d1b1e35;
+    }
+
+    .status-card {
+      margin: 0 80px;
+      min-height: 115px;
+      padding: 36px 44px;
+      border-radius: 10px;
+      background: var(--panel);
+      box-shadow: 0 8px 24px #2223;
+      font-size: 12px;
+    }
+    .thinking-dots { display: inline-flex; width: 18px; }
+    .thinking-dots span {
+      animation: thinking-dot 1.4s infinite;
+      opacity: .2;
+    }
+    .thinking-dots span:nth-child(2) { animation-delay: .2s; }
+    .thinking-dots span:nth-child(3) { animation-delay: .4s; }
+    @keyframes thinking-dot {
+      0%, 60%, 100% { opacity: .2; transform: translateY(0); }
+      30% { opacity: 1; transform: translateY(-2px); }
+    }
+    #state { margin-left: 8px; font-weight: 600; }
+
+    #log {
+      flex: 1;
+      margin: 18px 80px 70px;
+      overflow-y: auto;
+      color: #d4cfd2;
+      font: 12px/1.55 ui-monospace, SFMono-Regular, Consolas, monospace;
+      white-space: pre-wrap;
+      scrollbar-width: thin;
+      scrollbar-color: #676267 transparent;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity .35s ease, transform .35s ease;
+    }
+    main.message-open #log { opacity: 1; transform: translateY(0); }
+    #log:empty { display: block; }
+    #log > div { margin: 4px 0; }
+    .me { color: #81c997; } .ai { color: #c8a876; } .sys { color: var(--muted); } .err { color: #e27f7f; }
+
+    .composer {
+      position: absolute;
+      left: 80px; right: 80px; bottom: 20px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      border: 1px solid #9c7547;
+      border-radius: 10px;
+      background: var(--panel);
+      box-shadow: 0 8px 24px #18171977;
+    }
+    #message {
+      flex: 1; min-width: 0; height: 100%;
+      padding: 0 23px;
+      border: 0; outline: 0;
+      color: var(--text); background: transparent;
+    }
+    #message::placeholder { color: #908a8e; }
+    .required { color: var(--gold-light); font-size: 23px; line-height: 1; }
+    #sendBtn {
+      width: 48px; height: 40px; margin: 0 7px 0 13px; padding: 0;
+      border: 0; border-radius: 5px;
+      color: var(--panel); background: var(--gold);
+      font-size: 0; cursor: pointer;
+    }
+    #sendBtn::after { content: "➤"; font-size: 18px; }
+    #sendBtn:disabled { opacity: .5; cursor: default; }
+
+    .rightbar { padding: 5px 16px 0 22px; }
+    .turn-card { padding: 12px; border-radius: 10px; background: var(--panel); }
+    .turn-card p { margin: 0 0 2px; }
+    .turn-card .muted { color: var(--muted); font-size: 12px; }
+    .settings-toggle {
+      width: 100%; margin-top: 8px; padding: 10px 8px;
+      border: 0; border-radius: 10px;
+      color: #322a25; background: var(--gold-light);
+      cursor: pointer;
+    }
+    .settings-toggle[aria-expanded="true"],
+    .summary-button[aria-expanded="true"] { box-shadow: inset 0 0 0 2px #e0b77c; }
+    .settings-toggle::before { content: "⚙"; margin-right: 8px; }
+    .summary-button { width: 100%; height: 39px; margin-top: 5px; border-radius: 9px; color: var(--text); }
+    .summary-button::before { content: "▱"; color: var(--gold); margin-right: 10px; }
+
+    .connection-settings {
+      margin-top: 8px; padding: 12px;
+      border-radius: 9px; background: var(--panel);
+    }
+    .connection-settings[hidden], .summary-panel[hidden] { display: none; }
+    .summary-panel {
+      margin-top: 8px;
+      padding: 12px;
+      border: 1px solid #4c474d;
+      border-radius: 9px;
+      color: var(--muted);
+      background: var(--panel);
+      font-size: 11px;
+    }
+    .summary-panel strong { display: block; margin-bottom: 6px; color: var(--text); font-size: 12px; }
+    .summary-panel p { margin: 4px 0; overflow-wrap: anywhere; }
+    .connection-settings label { display: block; margin: 8px 0 3px; color: var(--muted); font-size: 10px; }
+    .connection-settings input {
+      width: 100%; padding: 7px;
+      border: 1px solid #5b555b; border-radius: 5px;
+      outline: 0; color: var(--text); background: #302c31;
+      font-size: 11px;
+    }
+    .row { display: flex; gap: 5px; }
+    .row input { flex: 1; min-width: 0; }
+    .connection-settings button {
+      padding: 7px 8px; border: 0; border-radius: 5px;
+      color: #292329; background: var(--gold); cursor: pointer; font-size: 10px;
+    }
+    .connection-settings button:disabled { opacity: .45; cursor: default; }
+    .connection-actions { margin-top: 8px; }
+
+    @media (max-width: 850px) {
+      .app { grid-template-columns: 110px 1412px 210px; }
+      .status-card, #log { margin-left: 30px; margin-right: 30px; }
+      .composer { left: 30px; right: 30px; }
+      .rightbar { padding-left: 10px; padding-right: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand" aria-hidden="true"></div>
+    <div class="top-actions">
+      <div class="balance">100 ★</div>
+      <div class="avatar">U</div>
+    </div>
+  </header>
+
+  <div class="app">
+    <aside class="leftbar">
+      <div class="players">
+        <div class="player"><div class="player-avatar">♟</div><div>Мастер</div></div>
+        <div class="player"><div class="player-avatar">U</div><div>User</div></div>
+      </div>
+    </aside>
+
+    <main>
+      <div class="status-card">Мастер думает<span class="thinking-dots" aria-label="..."><span>.</span><span>.</span><span>.</span></span> <span id="state" class="sys">disconnected</span></div>
+      <div id="log"></div>
+      <div class="composer">
+        <input id="message" placeholder="Опишите действие" />
+        <span class="required">*</span>
+        <button id="sendBtn" type="button" aria-label="Отправить">Send</button>
+      </div>
+    </main>
+
+    <aside class="rightbar">
+      <div class="turn-card">
+        <p>Ход: 1</p>
+        <p class="muted">1 ход: 150</p>
+        <button id="settingsBtn" class="settings-toggle" type="button" aria-expanded="true" aria-controls="connectionSettings">Настройки</button>
+      </div>
+      <button id="summaryBtn" class="summary-button" type="button" aria-expanded="false" aria-controls="summaryPanel">Саммари</button>
+
+      <div id="summaryPanel" class="summary-panel" hidden>
+        <strong>Саммари сессии</strong>
+        <p id="summaryCount">Сообщений: 0</p>
+        <p id="summaryLast">Последнее сообщение: —</p>
+      </div>
+
+      <div id="connectionSettings" class="connection-settings">
+        <label for="hubUrl">URL хаба</label>
+        <input id="hubUrl" value="/api/chat/hub" />
+
+        <label for="chatId">Chat Id</label>
+        <div class="row">
+          <input id="chatId" placeholder="GUID чата" />
+          <button id="genBtn" type="button">GUID</button>
+        </div>
+
+        <div class="row connection-actions">
+          <button id="connectBtn" type="button">Connect + Join</button>
+          <button id="disconnectBtn" type="button" disabled>Disconnect</button>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const log = (text, cls = "sys") => {
+      const line = document.createElement("div");
+      line.className = cls;
+      line.textContent = `[${new Date().toLocaleTimeString()}] ${text}`;
+      $("log").appendChild(line);
+      $("log").scrollTop = $("log").scrollHeight;
+    };
+
+    let connection = null;
+
+    $("settingsBtn").onclick = () => {
+      const panel = $("connectionSettings");
+      panel.hidden = !panel.hidden;
+      $("settingsBtn").setAttribute("aria-expanded", String(!panel.hidden));
+    };
+
+    $("summaryBtn").onclick = () => {
+      const panel = $("summaryPanel");
+      const lines = Array.from($("log").children);
+      $("summaryCount").textContent = `Сообщений: ${lines.length}`;
+      $("summaryLast").textContent = `Последнее сообщение: ${lines.at(-1)?.textContent || "—"}`;
+      panel.hidden = !panel.hidden;
+      $("summaryBtn").setAttribute("aria-expanded", String(!panel.hidden));
+    };
+
+    $("genBtn").onclick = () => { $("chatId").value = crypto.randomUUID(); };
+
+    const isGuid = (value) => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value);
+
+    async function connectToChat() {
+      const chatId = $("chatId").value.trim();
+      if (!isGuid(chatId)) {
+        document.querySelector("main").classList.add("message-open");
+        log("Укажите корректный Chat Id в формате GUID", "err");
+        return;
+      }
+
+      if (connection?.state === signalR.HubConnectionState.Connected) return;
+
+      $("connectBtn").disabled = true;
+      $("connectBtn").textContent = "Подключение...";
+      setState("connecting…", "sys");
+
+      connection = new signalR.HubConnectionBuilder()
+        .withUrl($("hubUrl").value.trim())
+        .withAutomaticReconnect()
+        .build();
+
+      connection.on("ReceiveMessage", (msg) => {
+        if (!msg || typeof msg.message !== "string") {
+          log("Получено сообщение неизвестного формата", "err");
+          return;
+        }
+
+        log(msg.message, "ai");
+        document.querySelector("main").classList.add("message-open");
+      });
+
+      connection.onreconnecting(() => setState("reconnecting…", "sys"));
+      connection.onreconnected(async () => {
+        setState("connected", "me");
+        try {
+          await connection.invoke("JoinChat", chatId);
+        } catch (e) {
+          log("Не удалось повторно войти в чат: " + e, "err");
+        }
+      });
+      connection.onclose(() => {
+        setState("disconnected", "sys");
+        $("disconnectBtn").disabled = true;
+        $("connectBtn").disabled = false;
+        $("connectBtn").textContent = "Connect + Join";
+      });
+
+      try {
+        await connection.start();
+        setState("connected", "me");
+        log("start() ok");
+
+        await connection.invoke("JoinChat", chatId);
+        log(`Подключено к чату ${chatId}`, "me");
+
+        $("disconnectBtn").disabled = false;
+        $("connectBtn").textContent = "Подключено";
+      } catch (e) {
+        log("Ошибка подключения: " + e, "err");
+        setState("disconnected", "sys");
+        $("connectBtn").disabled = false;
+        $("connectBtn").textContent = "Connect + Join";
+        connection = null;
+      }
+    }
+
+    $("connectBtn").onclick = connectToChat;
+
+    $("sendBtn").onclick = async () => {
+      const chatId = $("chatId").value.trim();
+      const text = $("message").value.trim();
+      if (!text) return;
+      if (!connection || connection.state !== signalR.HubConnectionState.Connected) {
+        document.querySelector("main").classList.add("message-open");
+        log("Сначала подключитесь к чату через настройки", "err");
+        return;
+      }
+      try {
+        await connection.invoke("NewMessage", chatId, text);
+        $("message").value = "";
+        document.querySelector("main").classList.add("message-open");
+      } catch (e) {
+        log("Ошибка отправки: " + e, "err");
+      }
+    };
+
+    $("disconnectBtn").onclick = async () => {
+      if (connection) {
+        try { await connection.invoke("LeaveChat", $("chatId").value.trim()); } catch {}
+        await connection.stop();
+      }
+      $("disconnectBtn").disabled = true;
+      $("connectBtn").disabled = false;
+      $("connectBtn").textContent = "Connect + Join";
+      connection = null;
+    };
+
+    $("message").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") $("sendBtn").onclick();
+    });
+
+    function setState(text, cls) { $("state").textContent = text; $("state").className = cls; }
+
+    const chatIdFromUrl = new URLSearchParams(window.location.search).get("chatId");
+    if (chatIdFromUrl) {
+      $("chatId").value = chatIdFromUrl;
+      connectToChat();
+    }
+  </script>
+</body>
+</html>

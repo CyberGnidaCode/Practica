@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ChatHub — тест</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.7/signalr.min.js"></script>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 720px; margin: 24px auto; padding: 0 16px; }
+    label { display: block; font-size: 13px; color: #555; margin: 10px 0 4px; }
+    input { width: 100%; padding: 8px; box-sizing: border-box; font-size: 14px; }
+    .row { display: flex; gap: 8px; }
+    .row input { flex: 1; }
+    button { padding: 8px 14px; font-size: 14px; cursor: pointer; }
+    button:disabled { opacity: .5; cursor: default; }
+    #log { margin-top: 16px; border: 1px solid #ddd; border-radius: 6px; padding: 12px;
+           height: 320px; overflow-y: auto; font-family: monospace; font-size: 13px; white-space: pre-wrap; }
+    .me { color: #0a6; } .ai { color: #06c; } .sys { color: #999; } .err { color: #c00; }
+    #state { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>ChatHub — тест <span id="state" class="sys">disconnected</span></h2>
+
+  <label>URL хаба</label>
+  <input id="hubUrl" value="http://localhost:5173/hubs/chat" />
+
+  <label>Chat Id (GUID существующего чата в БД)</label>
+  <div class="row"></div>
+    <input id="chatId" placeholder="00000000-0000-0000-0000-000000000000" />
+    <button id="genBtn" type="button">GUID</button>
+  </div>
+
+  <div class="row" style="margin-top:12px">
+    <button id="connectBtn" type="button">Connect + Join</button>
+    <button id="disconnectBtn" type="button" disabled>Disconnect</button>
+  </div>
+
+  <label>Сообщение</label>
+  <div class="row">
+    <input id="message" placeholder="Привет" />
+    <button id="sendBtn" type="button" disabled>Send</button>
+  </div>
+
+  <div id="log"></div>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const log = (text, cls = "sys") => {
+      const line = document.createElement("div");
+      line.className = cls;
+      line.textContent = `[${new Date().toLocaleTimeString()}] ${text}`;
+      $("log").appendChild(line);
+      $("log").scrollTop = $("log").scrollHeight;
+    };
+
+    let connection = null;
+
+    $("genBtn").onclick = () => { $("chatId").value = crypto.randomUUID(); };
+
+    $("connectBtn").onclick = async () => {
+      const chatId = $("chatId").value.trim();
+      if (!chatId) { log("Укажи Chat Id", "err"); return; }
+
+      connection = new signalR.HubConnectionBuilder()
+        .withUrl($("hubUrl").value.trim())      // withCredentials включён по умолчанию
+        .withAutomaticReconnect()
+        .build();
+
+      // сервер → клиент: сюда приходят и реплика пользователя, и ответ нейронки
+      connection.on("ReceiveMessage", (msg) => {
+        log(`ReceiveMessage: ${JSON.stringify(msg)}`, "ai");
+      });
+
+      connection.onreconnecting(() => setState("reconnecting…", "sys"));
+      connection.onreconnected(() => setState("connected", "me"));
+      connection.onclose(() => setState("disconnected", "sys"));
+
+      try {
+        await connection.start();
+        setState("connected", "me");
+        log("start() ok");
+
+        await connection.invoke("JoinChat", chatId);
+        log(`JoinChat(${chatId}) ok`);
+
+        $("sendBtn").disabled = false;
+        $("disconnectBtn").disabled = false;
+        $("connectBtn").disabled = true;
+      } catch (e) {
+        log("Ошибка подключения: " + e, "err");
+      }
+    };
+
+    $("sendBtn").onclick = async () => {
+      const chatId = $("chatId").value.trim();
+      const text = $("message").value.trim();
+      if (!text) return;
+      try {
+        await connection.invoke("NewMessage", chatId, text);
+        log(`NewMessage отправлен: "${text}"`, "me");
+        $("message").value = "";
+      } catch (e) {
+        log("Ошибка отправки: " + e, "err");
+      }
+    };
+
+    $("disconnectBtn").onclick = async () => {
+      if (connection) {
+        try { await connection.invoke("LeaveChat", $("chatId").value.trim()); } catch {}
+        await connection.stop();
+      }
+      $("sendBtn").disabled = true;
+      $("disconnectBtn").disabled = true;
+      $("connectBtn").disabled = false;
+    };
+
+    $("message").addEventListener("keydown", (e) => {
+      if (e.key === "Enter" && !$("sendBtn").disabled) $("sendBtn").onclick();
+    });
+
+    function setState(text, cls) { $("state").textContent = text; $("state").className = cls; }
+  </script>
+</body>
+</html>

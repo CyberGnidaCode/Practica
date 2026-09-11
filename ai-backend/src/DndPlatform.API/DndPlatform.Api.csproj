@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <UserSecretsId>1b4274b8-9564-4539-b134-af3964f6fdf0</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" />
+    <PackageReference Include="Serilog.AspNetCore" />
+    <PackageReference Include="Serilog.Settings.Configuration" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DndPlatform.Domain\DndPlatform.Domain.csproj" />
+    <ProjectReference Include="..\DndPlatform.Application\DndPlatform.Application.csproj" />
+    <ProjectReference Include="..\DndPlatform.Infrastructure\DndPlatform.Infrastructure.csproj" />
+    <ProjectReference Include="..\DndPlatform.Persistence\DndPlatform.Persistence.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\Chats\Requests\" />
+    <Folder Include="Models\Chats\Responses\" />
+    <Folder Include="Models\Messages\Responses\" />
+  </ItemGroup>
+ </Project>

@@ -1,0 +1,20 @@
+services:
+  dndplatform.api:
+    image: dndplatformapi
+    container_name: dndplatformapi
+    build:
+      context: .
+      dockerfile: DndPlatform.Api/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ConnectionStrings__StorageContext=Host=postgres;Port=5432;Database=dnd_platform_storage_local;Username=postgres;Password=admin
+    ports:
+      - "8080:8080"
+    networks:
+      - app-net
+
+networks:
+  app-net:
+    external: true
+    name: dndplatform-net

@@ -1,0 +1,6 @@
+# Сгенерированный efcpt код — обрубаем наследование правил из src/.editorconfig
+# и помечаем как generated, чтобы ReSharper не применял свои инспекции.
+root = true
+
+[*.cs]
+generated_code = true
