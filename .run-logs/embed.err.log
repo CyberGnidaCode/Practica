@@ -1,0 +1,14 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/389 [00:00<?, ?it/s]Loading weights:   6%|6         | 24/389 [00:00<00:01, 237.86it/s]Loading weights:  15%|#5        | 59/389 [00:00<00:01, 294.32it/s]Loading weights:  23%|##2       | 89/389 [00:00<00:02, 125.81it/s]Loading weights:  28%|##8       | 109/389 [00:00<00:02, 134.98it/s]Loading weights:  35%|###5      | 138/389 [00:00<00:01, 161.92it/s]Loading weights:  41%|####      | 159/389 [00:00<00:01, 171.84it/s]Loading weights:  46%|####6     | 180/389 [00:01<00:01, 138.47it/s]Loading weights:  58%|#####7    | 224/389 [00:01<00:00, 193.58it/s]Loading weights:  63%|######3   | 247/389 [00:01<00:01, 123.73it/s]Loading weights:  70%|#######   | 273/389 [00:01<00:00, 144.22it/s]Loading weights:  75%|#######5  | 293/389 [00:01<00:00, 134.24it/s]Loading weights:  88%|########7 | 341/389 [00:02<00:00, 199.76it/s]Loading weights: 100%|##########| 389/389 [00:02<00:00, 187.24it/s]
+[transformers] [1mRobertaModel LOAD REPORT[0m from: ai-forever/ru-en-RoSBERTa
+Key                 | Status  | 
+--------------------+---------+-
+pooler.dense.weight | MISSING | 
+pooler.dense.bias   | MISSING | 
+
+Notes:
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+INFO:     Started server process [13692]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8084 (Press CTRL+C to quit)

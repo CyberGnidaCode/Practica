@@ -1,0 +1,17 @@
+Используются параметры запуска из ai-engine\src\Engine.Api\Properties\launchSettings.json...
+[15:26:08 INF] Now listening on: http://localhost:5154
+[15:26:08 INF] Application started. Press Ctrl+C to shut down.
+[15:26:08 INF] Hosting environment: Development
+[15:26:08 INF] Content root path: C:\projects\Practica\ai-engine\src\Engine.Api
+[15:27:23 INF] HTTP GET /swagger/v1/swagger.json responded 200 in 154.0768 ms [- -]
+[15:29:18 INF] HTTP GET /swagger/index.html responded 200 in 103.7150 ms [- -]
+[15:32:47 INF] HTTP GET /swagger/index.html responded 200 in 1.2127 ms [- -]
+[15:33:35 INF] HTTP GET /swagger responded 301 in 0.4538 ms [- -]
+[15:33:35 INF] HTTP GET /swagger/index.html responded 200 in 0.3214 ms [- -]
+[15:33:36 INF] HTTP GET /swagger/swagger-ui.css responded 200 in 19.3335 ms [- -]
+[15:33:36 INF] HTTP GET /swagger/index.css responded 200 in 0.5597 ms [- -]
+[15:33:36 INF] HTTP GET /swagger/swagger-ui-standalone-preset.js responded 200 in 4.6564 ms [- -]
+[15:33:36 INF] HTTP GET /swagger/swagger-ui-bundle.js responded 200 in 20.1740 ms [- -]
+[15:33:36 INF] HTTP GET /swagger/index.js responded 200 in 0.3559 ms [- -]
+[15:33:36 INF] HTTP GET /swagger/v1/swagger.json responded 200 in 1.5306 ms [- -]
+[15:33:36 INF] HTTP GET /swagger/favicon-32x32.png responded 200 in 1.0942 ms [- -]
