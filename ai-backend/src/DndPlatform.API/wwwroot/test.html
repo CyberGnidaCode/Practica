@@ -21,11 +21,14 @@
 
     * { box-sizing: border-box; }
 
-    html, body { height: 100%; }
+    html, body { min-height: 100%; }
 
     body {
       margin: 0;
-      overflow: hidden;
+      /* Не скрываем вертикальное переполнение: на низких экранах поле ввода
+         остаётся доступным прокруткой страницы. */
+      overflow-x: auto;
+      overflow-y: auto;
       color: var(--text);
       background: radial-gradient(circle at 50% 45%, #414343 0, var(--page) 62%, #353737 100%);
       font: 14px/1.4 Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -63,7 +66,7 @@
     }
 
     .app {
-      height: calc(100% - 50px);
+      min-height: calc(100vh - 50px);
       display: grid;
       grid-template-columns: 150px 1412px 250px;
       justify-content: space-between;

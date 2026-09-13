@@ -2280,3 +2280,4 @@ System.InvalidOperationException: An exception has been raised that is likely du
    at DndPlatform.Infrastructure.Servises.Entities.MessageService.SendMessageAsync(MessageDto message, CancellationToken cancellationToken) in C:\projects\Practica\ai-backend\src\DndPlatform.Infrastructure\Servises\Entities\MessageService.cs:line 75
    at Microsoft.AspNetCore.SignalR.Internal.DefaultHubDispatcher`1.ExecuteMethod(ObjectMethodExecutor methodExecutor, Hub hub, Object[] arguments)
    at Microsoft.AspNetCore.SignalR.Internal.DefaultHubDispatcher`1.<Invoke>g__ExecuteInvocation|22_0(DefaultHubDispatcher`1 dispatcher, ObjectMethodExecutor methodExecutor, THub hub, Object[] arguments, AsyncServiceScope scope, IHubActivator`1 hubActivator, HubConnectionContext connection, HubMethodInvocationMessage hubMethodInvocationMessage, Boolean isStreamCall)
+[16:43:16 INF] HTTP GET /api/chat/hub responded 101 in 4162297.5865 ms
