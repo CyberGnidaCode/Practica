@@ -131,7 +131,7 @@ public class MessageService : ServiceBase<Message>, IMessageService
     {
         // get
         var senderTypeId = await this.context.SenderTypes.AsNoTracking()
-                               .Where(senderType => senderType.Code == SenderTypeConstants.User)
+                               .Where(senderType => senderType.Code == senderTypeCode)
                                .Select(senderType => senderType.Id)
                                .FirstOrDefaultAsync(cancellationToken);
 

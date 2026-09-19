@@ -325,7 +325,17 @@
       $("summaryBtn").setAttribute("aria-expanded", String(!panel.hidden));
     };
 
-    $("genBtn").onclick = () => { $("chatId").value = crypto.randomUUID(); };
+    $("genBtn").onclick = async () => {
+      try {
+        const response = await fetch("/api/development/test-chat", { method: "POST" });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const { chatId } = await response.json();
+        $("chatId").value = chatId;
+        log(`Создан тестовый чат ${chatId}`, "sys");
+      } catch (e) {
+        log("Не удалось создать тестовый чат: " + e, "err");
+      }
+    };
 
     const isGuid = (value) => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value);
 

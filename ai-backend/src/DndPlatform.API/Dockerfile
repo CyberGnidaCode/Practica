@@ -14,14 +14,14 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["Directory.Packages.props", "."]
 COPY ["Directory.Build.props", "."]
-COPY ["DndPlatform.Api/DndPlatform.Api.csproj", "DndPlatform.Api/"]
+COPY ["DndPlatform.API/DndPlatform.Api.csproj", "DndPlatform.API/"]
 COPY ["DndPlatform.Domain/DndPlatform.Domain.csproj", "DndPlatform.Domain/"]
 COPY ["DndPlatform.Application/DndPlatform.Application.csproj", "DndPlatform.Application/"]
 COPY ["DndPlatform.Infrastructure/DndPlatform.Infrastructure.csproj", "DndPlatform.Infrastructure/"]
 COPY ["DndPlatform.Persistence/DndPlatform.Persistence.csproj", "DndPlatform.Persistence/"]
-RUN dotnet restore "./DndPlatform.Api/DndPlatform.Api.csproj"
+RUN dotnet restore "./DndPlatform.API/DndPlatform.Api.csproj"
 COPY . .
-WORKDIR "/src/DndPlatform.Api"
+WORKDIR "/src/DndPlatform.API"
 RUN dotnet build "./DndPlatform.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
